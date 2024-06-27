@@ -3,6 +3,7 @@ def battery_is_ok(temperature, soc, ch_rate):
   if temp_check(temperature) and soc_check(soc) and charge_rate_check(ch_rate):
     print(" Battery is OK")
     return True
+  else: return False
   
 def temp_check(temp):
   if temp < 0 or temp > 45:
