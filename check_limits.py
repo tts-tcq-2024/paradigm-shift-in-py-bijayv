@@ -22,8 +22,6 @@ def charge_rate_check(ch):
   else: return True
     
 if __name__ == '__main__':
-  temperature = input("Please enter the temperature")
-  soc = input("Please enter the SOC")
-  ch_rate = input("Please enter the Charge rate")
-  battery_is_ok(temperature, soc, ch_rate)
+  assert(battery_is_ok(35, 30, 0.6) is True)
+
   
