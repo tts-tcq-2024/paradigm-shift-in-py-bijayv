@@ -6,9 +6,17 @@ def battery_is_ok(temperature, soc, ch_rate):
   
 def temp_check(temp):
   if temp < 0 or temp > 45:
-    print('Temperature is out of range!')
-    return False
-  else: return True
+    low_high_temp(temp)
+    #print('Temperature is out of range!')
+    #return False
+  else:
+    check_temp(temp)
+    
+def low_high_temp(temp):
+  if temp <0:
+    print('Temperature is LOW!')
+  else:
+print('Temperature is HIGH!')
     
 def soc_check(soc):
   if soc <=20 or soc > 80:
