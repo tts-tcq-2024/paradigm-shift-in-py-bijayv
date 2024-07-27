@@ -13,9 +13,8 @@ def temp_check(temp):
 def soc_check(soc):
   if soc <=20 or soc > 80:
     low_high_soc(soc)
-    #print('State of Charge is out of range!')
-    #return False
-  else: check_soc(soc)
+  else:
+    check_soc(soc)
 
 def low_high_soc(soc):
   if soc<20:
@@ -24,10 +23,14 @@ def low_high_soc(soc):
     print('State of Charge is HIGH BREACH')
 
 def check_soc(soc):
-  if soc >20 and soc <25:
-    print('State of Charge is LOW WARNING')
-  elif soc >=25 and soc <=75:
+  if soc <25 or soc >75:
+    warning_check(soc)
+  else:
     print('State of Charge is NORMAL')
+
+def warning_check(soc):
+  if soc <25:
+    print('State of Charge is LOW WARNING')
   else:
     print('State of Charge is HIGH WARNING')
     
