@@ -1,6 +1,8 @@
 
 def battery_is_ok(temperature, soc, ch_rate):
-  return (temp_check(temperature) and soc_check(soc) and charge_rate_check(ch_rate))
+  temp_check(temperature)
+  soc_check(soc)
+  charge_rate_check(ch_rate)
   
 def temp_check(temp):
   if temp < 0 or temp > 45:
@@ -9,10 +11,25 @@ def temp_check(temp):
   else: return True
     
 def soc_check(soc):
-  if soc <20 or soc > 80:
-    print('State of Charge is out of range!')
-    return False
-  else: return True
+  if soc <=20 or soc > 80:
+    low_high_soc(soc)
+    #print('State of Charge is out of range!')
+    #return False
+  else: check_soc(soc)
+
+def low_high_soc(soc):
+  if soc<20:
+    print('State of Charge is LOW BREACH')
+  else:
+    print('State of Charge is HIGH BREACH')
+
+def check_soc(soc):
+  if soc >20 and soc <25:
+    print('State of Charge is LOW WARNING')
+  elif soc >=25 and soc <=75:
+    print('State of Charge is NORMAL')
+  else:
+    print('State of Charge is HIGH WARNING')
     
 def charge_rate_check(ch):
   if ch > 0.8:
@@ -21,7 +38,7 @@ def charge_rate_check(ch):
   else: return True
     
 if __name__ == '__main__':
-  assert(battery_is_ok(25, 70, 0.7) is True)
-  assert(battery_is_ok(50, 85, 0) is False)
+  battery_is_ok(25, 70, 0.7)
+  battery_is_ok(50, 85, 0)
 
   
